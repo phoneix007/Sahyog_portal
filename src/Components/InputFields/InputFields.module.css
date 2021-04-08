@@ -1,0 +1,18 @@
+.Form{
+    font-size: 2rem;
+    /* box-shadow: 7px 8px 27px -3px rgba(225,144,40,0.75); */
+    background: orange;
+    width: 100vw;
+    height: 4rem;
+    margin-right: 2rem;
+
+}
+
+.Form input {
+    height : 3rem;
+    margin-right: 1rem;
+}
+
+.Form button{
+    height: 3rem;
+}

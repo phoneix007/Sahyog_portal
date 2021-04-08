@@ -1,0 +1,29 @@
+.Jumbo  {
+   background-image: url('https://cdn.dribbble.com/users/976984/screenshots/3727819/hospital.gif');
+   background-repeat: no-repeat;
+   height: 100vh;
+   background-size: cover; 
+}
+
+.Auth{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.btns > Button{
+  margin-right: 1rem;
+  width: 10rem;
+  border-radius: 100px;
+  text-transform: uppercase;
+  padding : 1rem;
+  background-color: #077563;
+  font-size: 1.5rem;
+  
+}
+
+.btns > Button:hover{
+ background-color: #077563;
+ border: none;
+
+}

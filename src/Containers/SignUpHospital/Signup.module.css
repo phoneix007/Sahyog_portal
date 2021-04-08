@@ -1,0 +1,22 @@
+.Form {
+    font-size: 2rem;
+    padding : 4rem;
+    color:#077563;
+    width: 60%;
+}
+
+.Form input{
+    height: 3.5rem;
+    font-size: 1.4rem;
+}
+
+.btn{
+    border-radius: 100px;
+    background-color:#077563;
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+.btn:hover{
+    background-color:#077563;
+}

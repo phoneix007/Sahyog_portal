@@ -1,0 +1,27 @@
+.Footer{ 
+  background-color: #077563;
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  padding: 2rem;
+  color: #fff;
+  position: fixed;
+  bottom: 0;
+  width:100%;
+}
+.link {
+  color: #fff;
+  font-size: 1.5rem;
+  margin-top: 2rem;
+}
+
+.ul_list li{
+  margin-top: 1rem;
+}
+
+.copyright{
+    margin-bottom: -20px;
+}
+
+.link:hover{
+    color:#fff;
+}
