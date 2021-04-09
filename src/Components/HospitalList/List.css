@@ -2,6 +2,10 @@
   padding: 1.5rem;
 }
 
+.details_btn{
+  border-radius: 1.5rem;
+}
+
 .hospital_points_section{
   display: grid;
   grid-template-rows: 1fr;

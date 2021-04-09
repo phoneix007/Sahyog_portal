@@ -19,11 +19,15 @@
   padding : 1rem;
   background-color: #077563;
   font-size: 1.5rem;
-  
+  color: #fff;
 }
 
 .btns > Button:hover{
  background-color: #077563;
  border: none;
 
+}
+
+.btnLink{
+  color: #fff;
 }
