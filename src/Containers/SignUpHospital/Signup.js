@@ -7,14 +7,14 @@ const SignUp = (props) => {
       <Row form>
         <Col md={6}>
           <FormGroup>
-            <Label for="UserName">User Name</Label>
-            <Input type="text" name="name" id="UserName" placeholder="User Name" />
+            <Label for="UserName">Hospital Id</Label>
+            <Input type="text" name="name" id="UserId" placeholder="Hospital Id" required=""/>
           </FormGroup>
         </Col>
         <Col md={6}>
           <FormGroup>
             <Label for="Password">Password</Label>
-            <Input type="password" name="password" id="Password" placeholder="Password"/>
+            <Input type="password" name="password" id="Password" placeholder="Password" required=""/>
           </FormGroup>
         </Col>
       </Row>
@@ -22,18 +22,15 @@ const SignUp = (props) => {
       <Col md={12}>
           <FormGroup>
             <Label for="HospitalName">Hospital Name </Label>
-            <Input type="text" name="HospitalName" id="HospitalName" placeholder="Name"/>
+            <Input type="text" name="HospitalName" id="HospitalName" placeholder="Hospital Name"/>
           </FormGroup>
         </Col>  
       </Row>
       <FormGroup>
-        <Label for="exampleAddress">Address</Label>
-        <Input type="text" name="address" id="exampleAddress" placeholder="1234 Main St"/>
+        <Label for="exampleAddress">Hospital Address</Label>
+        <Input type="text" name="address" id="exampleAddress" placeholder="e.g 1234 Main St"/>
       </FormGroup>
-      <FormGroup>
-        <Label for="exampleAddress2">Address 2</Label>
-        <Input type="text" name="address2" id="exampleAddress2" placeholder="Apartment, studio, or floor"/>
-      </FormGroup>
+      
       <Row form>
         <Col md={6}>
           <FormGroup>
@@ -54,11 +51,22 @@ const SignUp = (props) => {
           </FormGroup>  
         </Col>
       </Row>
-      {/* <FormGroup check>
-        <Input type="checkbox" name="check" id="exampleCheck"/>
-        <Label for="exampleCheck" check>Check me out</Label>
-      </FormGroup> */}
-      <Button className={Style.btn}>Create An Account</Button>
+
+      <Row form>
+        <Col md={6}>
+          <FormGroup>
+            <Label for="examplebed">Current Availability of Beds</Label>
+            <Input type="number" name="bed" id="examplebed"/>
+          </FormGroup>
+        </Col>
+        <Col md={6}>
+          <FormGroup>
+            <Label for="exampledoctor">Current Availability of Doctors</Label>
+            <Input type="number" name="doctor" id="exampledoctor"/>
+          </FormGroup>
+        </Col>
+      </Row>
+      <button type="button" style={{background: "#077563",height:"50px",width:"100px"}} class="btn btn-primary btn-lg">Register</button>
     </Form>
   );
 }
