@@ -9,8 +9,6 @@ import LoginUser from './Components/LoginUser/Login'
 import {Switch , Route} from 'react-router-dom'
 
 
-
-
 const App = () =>(
 <div>
   <div className={Style.Headline}>

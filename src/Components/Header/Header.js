@@ -7,7 +7,7 @@ const Header = () => {
    return (
    <div className={Style.Header}>
       <div><NavLink to= "/Main" className={Style.NavLink}>Home</NavLink></div>
-      <div><NavLink to= "/List" className={Style.NavLink}>About</NavLink></div>
+      <div><NavLink to= "/List" className={Style.NavLink}>Hospitals</NavLink></div>
       <div><NavLink to= "/service" className={Style.NavLink}>Service</NavLink></div>
       <div><NavLink to= "/blog" className={Style.NavLink}>Blog</NavLink></div>
       <div><NavLink to= "/contact" className={Style.NavLink}>Contact</NavLink></div>

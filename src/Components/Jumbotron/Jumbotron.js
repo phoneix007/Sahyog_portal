@@ -4,21 +4,12 @@ import Style from './Jumbotron.module.css'
 import Steps from './../Carousel/Carousel'
 import {NavLink} from 'react-router-dom'
 import SearchBar from './../SearchBar/SearchBar'
-import {usePosition} from './../CurrentLocation/CurrentLocation'
+
+
 
 
 const Main = (props) => {
   
-  // const lat = ''
-  // const lon = ''
-
-  //  const UsePositionDemo = () => {
-  //   const {latitude, longitude, error} = usePosition();
-  //   lat = latitude
-  //   lon = longitude 
-  // }
-  //   UsePositionDemo();
-  //   console.log(lat ,lon)
     window.navigator.geolocation
     .getCurrentPosition(function(position) {
       let lat = position.coords.latitude;

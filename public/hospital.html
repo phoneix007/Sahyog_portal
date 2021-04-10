@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-storage.js"></script>
+    <title>Sahyog Portal</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <link href="hospital.css" rel="stylesheet" type="text/css" >
+    <script src= ""></script>
+    <script src="./../src/GetHospitals//GetHospitals.js"></script>
+    <sript src="https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJN1t_tDeuEmsRUsoyG83frY4&fields=name,rating,formatted_phone_number&key=AIzaSyAoDJ4s8Sf-IdZrNNK58PTeTpmSr7KYAjw"></sript>
+  </head>
+  <body>
+    <script src = "./../src/config.js"></script>
+    <div id="container">
+      <div id="map"></div>
+      <div id="sidebar">
+        <h2>Results</h2>
+        <ul id="places"></ul>
+        <button id="more">Load more results</button>
+      </div>
+    </div>
+
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAoDJ4s8Sf-IdZrNNK58PTeTpmSr7KYAjw&callback=initMap&libraries=places&v=weekly&map_ids=8d193001f940fde3"
+      
+      async
+    ></script>
+    
+    
+  </body>
+</html>
