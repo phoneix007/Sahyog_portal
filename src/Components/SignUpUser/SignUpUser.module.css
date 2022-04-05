@@ -1,0 +1,40 @@
+.Login{
+    color: #077563;
+    margin-top: 7%;
+    /* border: 2px solid #077563; */
+    box-shadow:10px 12px 18px -1px rgba(7,117,99,0.64);
+    width: 40%;
+    margin-left: 28%;
+    font-size: 2rem;
+    text-align: center;
+    padding-top:2rem;
+    padding-bottom: 2rem;
+    /* display: flex;
+    justify-content: center; */
+}
+.btn{
+    background-color: #077563;
+    border-radius: 0px;
+    font-size: 2rem;
+    margin-top: 2rem;
+}
+
+.btn:hover{
+    background-color: #077563;
+}
+
+
+.btn:active{
+    background-color: #077563;
+    border-radius: 0px;
+    font-size: 1.4rem;
+}
+
+.Login input{
+    text-align: center;
+    color: #077563; 
+    width: 60%;   
+    border-bottom: 2px solid #077563;
+    font-size: 1.5rem;
+    margin-left:12rem ;
+}

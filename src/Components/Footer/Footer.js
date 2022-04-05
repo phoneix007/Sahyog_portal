@@ -9,7 +9,7 @@ import {GiEyeTarget} from 'react-icons/gi'
 
 const FooterPage = () => {
   return (
-    <MDBFooter className="font-small pt-4 mt-4" className={Style.Footer}>
+    <MDBFooter className="font-small pt-4 mt-4" className ={Style.Footer}>
       <MDBContainer fluid className="text-center text-md-left">
         <MDBRow>
           <MDBCol md="4 ">

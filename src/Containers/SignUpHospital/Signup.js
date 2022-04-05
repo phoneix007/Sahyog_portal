@@ -2,9 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import Style from './Signup.module.css'
 import axios from './../../axios_data'
+
 const SignUp = (props) => {
 
- const setValues = event => {
+  const fake = async (data) => {
+
+     await axios.post('https://sahyogdatabase-default-rtdb.firebaseio.com/Hospitals.json' , data)
+  }
+
+ const setValues = async (event) => {
    event.preventDefault()
     const Data = {
     UserName : document.getElementById('UserName').value,
@@ -16,27 +22,30 @@ const SignUp = (props) => {
     State : document.getElementById('State').value,
     Zip : document.getElementById('Zip').value
   }
-  console.log(Data)
+  let validation = true; 
+  const validationData = Object.values(Data)
 
-  axios.post('/SignUp.json' , Data)
-  .then(resp => {
-    console.log(resp)
-  }).catch(err => {
-    console.log(err);
-  })
    
- }
-  
-  const post = (values) => {   
-    alert(JSON.stringify(values))
-      axios.post('/beds.json', {
-        name:"hr hospital",
-        beds:23
-      }).then(res => {
-        console.log(res)
-      }).catch(err => console.log(err))
+ for(let x in validationData ){
+   if(validationData[x] === ''){
+    validation = false;
+    break;
    }
+ }
+ console.log(validation)
+  if(validation === false){
+    alert('All the fields are mandatory');
+    return;
+  }
+  else{
+    fake(Data);
+    await axios.post('https://sahyogportal-mp2-default-rtdb.firebaseio.com/SignUp.json' , Data)
+    alert('Data Saved Succesfully');
+  }
+  
+ } 
 
+ // adding bed also to firebase.
   return (
     <Form className= {`${Style.Form} container`}>
       <Row form>

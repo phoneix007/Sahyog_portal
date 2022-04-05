@@ -15,3 +15,11 @@
 .row{
   color: #077563;
 }
+
+.card{
+  transition: all 0.1s ease-in;
+}
+
+.card:hover{
+ transform: translateY(-0.2rem);
+}

@@ -11,23 +11,38 @@
     align-content: center;
 }
 
-.btns > Button{
+
+.btns > button{
   margin-right: 1rem;
-  width: 10rem;
+  width: 12rem;
   border-radius: 100px;
   text-transform: uppercase;
   padding : 1rem;
-  background-color: #077563;
   font-size: 1.5rem;
   color: #fff;
+  background-color: #077563;
 }
 
 .btns > Button:hover{
  background-color: #077563;
  border: none;
-
 }
 
 .btnLink{
   color: #fff;
+}
+
+
+.link {
+  color: #fff;
+}
+
+.link:hover{
+  color: #fff;
+}
+
+.paragraph{
+  font-size: 3rem;
+  font-family: 'Times New Roman', Times, serif;
+  color: #077563;
 }

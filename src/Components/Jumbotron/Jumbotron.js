@@ -1,23 +1,15 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Jumbotron, Button } from 'reactstrap';
 import Style from './Jumbotron.module.css'
 import Steps from './../Carousel/Carousel'
 import {NavLink} from 'react-router-dom'
 import SearchBar from './../SearchBar/SearchBar'
-
-
-
+import { useSelector } from 'react-redux';
 
 const Main = (props) => {
+  const isUser = useSelector((state) => state.ChangeLogInState);
+  console.log(isUser);
   
-    window.navigator.geolocation
-    .getCurrentPosition(function(position) {
-      let lat = position.coords.latitude;
-      let long = position.coords.longitude;
-      console.log(lat)
-      console.log(long)
-    },console.log);
-
     return (
       <div className = "container">
         <Jumbotron className = {Style.Jumbo}>
@@ -28,14 +20,19 @@ const Main = (props) => {
           }}>Sahyog</h1>
           <SearchBar/>
            <div className ={Style.btns}>
-            <Button color="primary"><NavLink to = "/Login">Login </NavLink></Button>
-            <Button color="primary"><NavLink to = "/SignUp">SignUp</NavLink></Button>
+             {
+                !isUser ? 
+                <div>
+                <Button variant="outline-primary"><NavLink to = "/Login" className={Style.link}>Login </NavLink></Button>
+                <Button><NavLink to = "/UserSignUp" className={Style.link}>User SignUp</NavLink></Button> 
+                </div> : <p>{`Welcome ${localStorage.getItem('email')}`}</p>
+             }
             </div>
             </div>
           <p className="lead"></p>
           <hr className="my-2" />
           
-          <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+          <p className={Style.paragraph}>Right Hospital at the right time.🚑</p>
           <p className="lead">
           </p>
         </Jumbotron>
@@ -44,4 +41,4 @@ const Main = (props) => {
     );
   };
 
-export default Main
+export default Main;
