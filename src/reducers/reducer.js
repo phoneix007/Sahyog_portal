@@ -9,4 +9,4 @@ const ChangeLogInState = (state = userLoggedIn , action) => {
        return userLoggedIn;
    }
 }
-export { ChangeLogInState};
+export { ChangeLogInState };

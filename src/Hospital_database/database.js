@@ -619,7 +619,9 @@ const data = [
 ]
 
 const sendData = async () => {
-    await axios.post('https://sahyogdatabase-default-rtdb.firebaseio.com/hospitals.json' , data);
+    for(let x of data)
+    
+    await axios.post('https://sahyogportal-mp2-default-rtdb.firebaseio.com/hospitals.json' , x );
 }
 
 sendData();

@@ -4,21 +4,23 @@ import Style from './SignUpUser.module.css';
 import axios from 'axios';
 import {
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
   signOut,
 } from "firebase/auth";
 import { useHistory } from "react-router-dom";
 import { auth } from '../../config'
 import {send} from 'emailjs-com';
+import { useSelector , useDispatch } from 'react-redux';
+import { LogginUser } from '../../actions/action';
+import { getDatabase, ref, set } from "firebase/database";
 
 
 const SERVICE_ID = 'service_i9ckz5t';
 const TEMPLATE_ID = 'template_66awqal';
 const USER_ID = 'GpE3RvCixvRb591Pg';
 
-const SignUpUser = (props) => {
- 
+const SignUpUser = (props) => { 
+  const isUser= useSelector(state => state.ChangeLogInState);
+   const dispatch = useDispatch();
   const [userSignupData , setUserData] = useState({
     userName:'',
     email: '',
@@ -28,11 +30,15 @@ const SignUpUser = (props) => {
   const history = useHistory();
 
   const userSignupHandler = e => {
-    const name = e.target.name;
+    const name = e.target.name; 
     const value = e.target.value; 
     setUserData({...userSignupData, [name]: value});
-  
   }
+
+  //  const setDataToFirebase = (userId , userName , userEmail) =>  {
+  //    const db = getDatabase().ref('/users');
+  //  }
+
 
   const postDataHandler = async () => {
     
@@ -47,31 +53,30 @@ const SignUpUser = (props) => {
      // automatically log you in
      try{
      const currentUser = await createUserWithEmailAndPassword(auth , userData.email , userData.password);
-    //  console.log(user);
      await axios.post('https://sahyogportal-mp2-default-rtdb.firebaseio.com/UserSignUp.json' ,{...userData , uid: currentUser.user.uid});
      alert('saving your data And Redirecting you');
+    //  setDataToFirebase(currentUser.user.uid , userData.userName , userData.email);
+     dispatch(LogginUser()); 
+     localStorage.setItem('email' , userData.email);
      history.push('/Main');
 
-     send(
-      SERVICE_ID,
-      TEMPLATE_ID,
-      toSend,
-      USER_ID
-    )
-      .then((response) => {
-        console.log('SUCCESS!', response.status, response.text);
-      })
-      .catch((err) => {
-        console.log('FAILED...', err);
-      });
+    //  send(
+    //   SERVICE_ID,
+    //   TEMPLATE_ID,
+    //   toSend,
+    //   USER_ID
+    // )
+    //   .then((response) => {
+    //     console.log('SUCCESS!', response.status, response.text);
+    //   })
+    //   .catch((err) => {
+    //     console.log('FAILED...', err);
+    //   });
 
      } catch(error){
        console.log(error.message);
        alert('Error Occure while storing')
-     }
-
-     
-     
+     }  
   }
 
   // Need for sign out 

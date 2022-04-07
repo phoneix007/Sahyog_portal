@@ -1,6 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {NavLink} from 'react-router-dom'
+
 
 
 const DoctorsInfo = (props) => {
@@ -11,7 +11,7 @@ const DoctorsInfo = (props) => {
              <div className="card-body">
              <h5 className="card-title">{props.speciality}</h5>
              <p className="card-text">{props.name}</p>
-             <NavLink  to='#'className="btn btn-primary">{`Timings 9AM to 1 PM `}</NavLink>
+             <button className="btn btn-primary">{props.timings}</button>
              </div>
           </div>
     )
