@@ -8,6 +8,7 @@ import { browserHistory } from 'react-router';
 import {useHistory} from 'react-router-dom';
 import { useSelector , useDispatch } from 'react-redux';
 import { LogginUser } from '../../actions/action';
+import {NavLink} from 'react-router-dom'
  
 const LoginUser = (props) => {
   const [userData, setUserData] = useState({
@@ -47,6 +48,7 @@ const LoginUser = (props) => {
        alert('error occur while trying to login')
      }
    }
+
   return (
       <div className={Style.Login}>
     <Form>
@@ -62,6 +64,7 @@ const LoginUser = (props) => {
       </FormGroup>
 
       <Button className={Style.btn} onClick={userLoginHandler }>Log In</Button>
+      <Button className={Style.btn} onClick={() => history.push('/UserSignUp')}>SignUp</Button> 
     </Form>
     </div>
   )

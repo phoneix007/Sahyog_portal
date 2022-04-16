@@ -5,12 +5,14 @@ import Steps from './../Carousel/Carousel'
 import {NavLink} from 'react-router-dom'
 import SearchBar from './../SearchBar/SearchBar'
 import { useSelector } from 'react-redux';
+import Footer from '../Footer/Footer'
 
 const Main = (props) => {
   const isUser = useSelector((state) => state.ChangeLogInState);
   console.log(isUser);
   
     return (
+      <>
       <div className = "container">
         <Jumbotron className = {Style.Jumbo}>
         <div className ={Style.Auth}>
@@ -23,8 +25,8 @@ const Main = (props) => {
              {
                 !isUser ? 
                 <div>
-                <Button variant="outline-primary"><NavLink to = "/Login" className={Style.link}>Login </NavLink></Button>
-                <Button><NavLink to = "/UserSignUp" className={Style.link}>User SignUp</NavLink></Button> 
+                {/* <Button variant="outline-primary"><NavLink to = "/Login" className={Style.link}>Login </NavLink></Button> */}
+                {/* <Button><NavLink to = "/UserSignUp" className={Style.link}>User SignUp</NavLink></Button>  */}
                 </div> : <p>{`Welcome ${localStorage.getItem('email')}`}</p>
              }
             </div>
@@ -38,6 +40,8 @@ const Main = (props) => {
         </Jumbotron>
         <Steps/>
       </div>
+      <Footer/>
+      </>
     );
   };
 

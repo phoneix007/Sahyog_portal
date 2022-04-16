@@ -13,14 +13,17 @@
     justify-content: center; */
 }
 .btn{
-    background-color: #077563;
+    background-color: #077563 !important;
     border-radius: 0px;
-    font-size: 2rem;
+    font-size: 1.3rem !important;
     margin-top: 2rem;
+    padding: 1rem 1rem !important;
+    width: 8rem;
+    margin: 1rem;
 }
 
 .btn:hover{
-    background-color: #077563;
+    background-color: #077563 !important;
 }
 
 

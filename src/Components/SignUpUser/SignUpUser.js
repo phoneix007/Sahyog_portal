@@ -60,18 +60,18 @@ const SignUpUser = (props) => {
      localStorage.setItem('email' , userData.email);
      history.push('/Main');
 
-    //  send(
-    //   SERVICE_ID,
-    //   TEMPLATE_ID,
-    //   toSend,
-    //   USER_ID
-    // )
-    //   .then((response) => {
-    //     console.log('SUCCESS!', response.status, response.text);
-    //   })
-    //   .catch((err) => {
-    //     console.log('FAILED...', err);
-    //   });
+     send(
+      SERVICE_ID,
+      TEMPLATE_ID,
+      toSend,
+      USER_ID
+    )
+      .then((response) => {
+        console.log('SUCCESS!', response.status, response.text);
+      })
+      .catch((err) => {
+        console.log('FAILED...', err);
+      });
 
      } catch(error){
        console.log(error.message);

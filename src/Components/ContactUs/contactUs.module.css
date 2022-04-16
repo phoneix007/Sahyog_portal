@@ -1,0 +1,37 @@
+.inputContact {
+    border: none;
+    border-bottom: 1px solid #077563;
+    padding: 2rem;
+    font-size: 1.7rem;
+    margin: 1rem;
+    
+}
+
+.inputContact:focus{
+  box-shadow : none;
+}
+
+.contact_section{
+    /* border: 2px solid #077563; */
+
+    
+}
+
+.contact_form{
+     margin-left: 5rem; 
+    /* border: 2px solid blue; */
+
+}
+
+.btn{
+    padding: .8rem;
+    margin-top: 1.5rem;
+    font-size: 1.2rem;
+    background-color: #077563;
+    width: 8rem;
+    margin-left: 5rem;
+}
+
+p{
+    font-size: 1.4rem;
+}
