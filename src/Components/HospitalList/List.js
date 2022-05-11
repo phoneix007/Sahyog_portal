@@ -26,19 +26,31 @@ const List = (props) => {
       beds: bedsAvailable - 1,
     })
      setGetReload(!getReload);
-
   }
+
+   const compare = (listInDatabase , listByGoogleApi) => {
+      const finalHospitalsList = [];
+      listInDatabase.forEach(el => {
+           if(listByGoogleApi.includes(el['HospitalName'])){
+             finalHospitalsList.push(el);
+           }
+      })
+       return finalHospitalsList;
+    }
     
   useEffect( () => {
      const getdata = async() => {
 
-      const response = await axios.get('https://sahyogportal-mp2-default-rtdb.firebaseio.com/Hospital_Details.json');
+      const response = await axios.get('https://sahyogportal-mp2-default-rtdb.firebaseio.com/Default_Hospitals/-N0UtykrFsgpzEqymrA2/Hospital_Details.json');
       let arr = [];
       for(const key in response.data){
         arr.push({...response.data[key], id: key});
       }
-      arr.sort((a , b) => b['HospitalRating'] - a['HospitalRating']);
-      setHospitals(arr);
+      const liveHospitals = await axios.get('https://sahyogportal-mp2-default-rtdb.firebaseio.com/Hospitals/Live_hospital.json');
+       console.log(liveHospitals.data);
+      const finalArray = compare(arr , liveHospitals.data);
+      finalArray.sort((a , b) => b['HospitalRating'] - a['HospitalRating']);
+      setHospitals(finalArray);
       // console.log(arr[0]['Doctor Details']);
      }
      
@@ -80,15 +92,7 @@ const List = (props) => {
 
 
 
-//  const compare = (listInDatabase , listByGoogleApi) => {
-//       const finalHospitalsList = [];
-//       listInDatabase.forEach(el => {
-//            if(listByGoogleApi.includes(el['name'])){
-//              finalHospitalsList.push(el);
-//            }
-//       })
-//        return finalHospitalsList;
-//     }
+
 // const lb = [{name: 'hospital 1'}, {name:'hospital 2' },  {name:'hospital 3' } ,  {name:'hospital 4' },  {name:'hospital 5' }, {name:'hospital 6' }];
 
 // const ga = ['hospital 3', 'hospital 4' , 'hospital 5' ,'hospital 100' ];

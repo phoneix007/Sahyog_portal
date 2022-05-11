@@ -21,15 +21,17 @@ const DoctorsInfo = (props) => {
       spec = props.doctors[x].Specialization 
   }
  
-  const url = 'https://sahyogportal-mp2-default-rtdb.firebaseio.com/Hospital_Details/';
+  const url = 'https://sahyogportal-mp2-default-rtdb.firebaseio.com/Default_Hospitals/-N0UtykrFsgpzEqymrA2/Hospital_Details/';
 
   const seatBooked = async (docName , timing) => {
     try{
       const seats = await axios.get(`${url}${hospitalName}/Doctor Details/${spec}/${docName}/DoctorTiming/${timing}/Seats.json`);
+      console.log(seats.data);
       await axios.patch(`${url}${hospitalName}/Doctor Details/${spec}/${docName}/DoctorTiming/${timing}.json`, {
         Seats: (parseInt(seats.data) - 1)     
       });
       history.push('/List');
+      await axios.post('https://sahyogportal-mp2-default-rtdb.firebaseio.com/Appointments.json', {Timing: timing, Doctor: docName});
       console.log(`${url}${hospitalName}/Doctor Details/${spec}/${docName}/DoctorTiming/${timing}/Seats.json`);
       alert(`Your seat is booked , Slot Timing is ${timing}`);
     }
@@ -91,15 +93,3 @@ const DoctorsInfo = (props) => {
 }
 
 export default DoctorsInfo;
-
-
-// return (
-//     <div className="card" key={new Date()}>
-//        <h5 className="card-header">{props.hospitalName}</h5>
-//        <div className="card-body">
-//        <h5 className="card-title">{props.speciality}</h5>
-//        <p className="card-text">{props.name}</p>
-//        <button className="btn btn-primary">{props.timings}</button>
-//        </div>
-//     </div>
-// )

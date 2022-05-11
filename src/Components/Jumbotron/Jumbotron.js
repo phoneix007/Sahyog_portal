@@ -20,7 +20,7 @@ const Main = (props) => {
               fontWeight:"600",
                color: "#077563"
           }}>Sahyog</h1>
-          <SearchBar/>
+          {/* <SearchBar/> */}
            <div className ={Style.btns}>
              {
                 !isUser ? 

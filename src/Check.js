@@ -1,29 +1,10 @@
-// import React,{useState,useEffect} from 'react';
-// import app from './config2';
+import axios from 'axios';
+
+function setData(){
+    axios.post('https://sahyogportal-mp2-default-rtdb.firebaseio.com/Hospitals/Live_Hospital.json' ,["Sir Shadi Lal Civil Hospital, Rewari","Hariom Agresen Hospital" , "Apollo Clinic, Rewari","marsh hospital" , "Mars Hospital", "Dr Rahul Dhingra's Jai Luxmi Dental Clinic"]);
+}
+
+setData();
 
 
 
-// const Hospital = () => {
-//     const [Hospital, setHospital]=useState([]);
-
-//     useEffect(() => {
-//            console.log('hello ')
-//         const fetchHospitals = async() => {
-//             try {
-//         const response = await .database(app)
-//         console.log(response);
-//             }
-//             catch(error){
-//                 console.log('error occur');
-//             }
-//       }
-//       fetchHospitals();
-//     })
-
-//     return (
-//         <h1>Hello </h1> 
-//     )
-// }
-
-
-// export default Hospital;

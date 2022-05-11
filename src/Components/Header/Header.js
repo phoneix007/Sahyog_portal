@@ -8,7 +8,9 @@ const Header = () => {
    <div className={Style.Header}>
       <div><NavLink to= "/Main" className={Style.NavLink}>Home</NavLink></div>
       <div><NavLink to= "/List" className={Style.NavLink}>Hospitals</NavLink></div>
+      <div><NavLink to= "/Appointments" className={Style.NavLink}>Appointments</NavLink></div>
       <div><NavLink to= "/Contact" className={Style.NavLink}>Contact</NavLink></div>
+      
    </div> 
    )
 }
