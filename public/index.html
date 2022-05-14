@@ -25,6 +25,9 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase.js"></script>
+    <script type = "text/javascript" src = "./index.js"></script>
+  
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -39,5 +42,99 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <button onclick="window[initMap()]" style="color: white;
+                                                background-color: #077563;
+                                                position: absolute;
+                                                top: 3%;
+                                                right: 10%;
+                                                width: 10rem;
+                                                padding: 1rem;
+                                                font-size: 1rem;
+                                                border-radius: 50px;
+                                                border: none;">Location</button>
+    <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAoDJ4s8Sf-IdZrNNK58PTeTpmSr7KYAjw&callback=initMap&libraries=places&v=weekly"
+    async
+  ></script>
   </body>
 </html>
+<script>
+  let loc;
+function initMap() {
+    // Create the map.
+    getLocation()
+    if(loc==null) return
+    const map = new google.maps.Map({});
+    // Create the places service.
+    const service = new google.maps.places.PlacesService(map);
+    
+  
+    // Perform a nearby search.
+    service.nearbySearch(
+      { location: loc, radius: 10000, type: "hospital" },
+      (results, status, pagination) => {
+        if (status !== "OK" || !results) return;
+  
+        addPlaces(results, map);
+      }
+    );
+  }
+  
+function addPlaces(places, map) {
+  const placesList =[];
+  const ListOfHospitals=[];
+  for (const place of places) {
+    if (place.geometry && place.geometry.location) {
+      const image = {
+        url: place.icon,
+          size: new google.maps.Size(71, 71),
+          origin: new google.maps.Point(0, 0),
+          anchor: new google.maps.Point(17, 34),
+          scaledSize: new google.maps.Size(25, 25),
+        };
+  
+        new google.maps.Marker({
+          map,
+          icon: image,
+          title: place.name,
+          position: place.geometry.location,
+        });
+        const li = [];
+  
+        li.textContent = place.name;
+        placesList.push(li);
+        ListOfHospitals.push(li.textContent);
+        
+      //  console.log(li.innerText);
+      }
+    }
+    // console.log(placesList);
+    console.log(ListOfHospitals);
+    const firebaseConfig = {
+      apiKey: "AIzaSyAAs0_uQgA91ELQmhoNnslFQLFtJI9hEVc",
+      authDomain: "sahyogportal-mp2.firebaseapp.com",
+      databaseURL: "https://sahyogportal-mp2-default-rtdb.firebaseio.com",
+      projectId: "sahyogportal-mp2",
+     storageBucket: "sahyogportal-mp2.appspot.com",
+      messagingSenderId: "110600262630",
+      appId: "1:110600262630:web:36c7dbab4c21088f167c27"
+  };
+     firebase.initializeApp(firebaseConfig);
+    
+    let hospitalsRef = firebase.database().ref("Hospitals/");
+
+    hospitalsRef.update ({
+       Live_hospital: ListOfHospitals
+       
+    });
+}
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } 
+}
+function showPosition(position) {
+  loc = { lat: position.coords.latitude, lng: position.coords.longitude};
+}
+</script>

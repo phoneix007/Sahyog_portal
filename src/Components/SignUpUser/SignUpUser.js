@@ -34,12 +34,6 @@ const SignUpUser = (props) => {
     const value = e.target.value; 
     setUserData({...userSignupData, [name]: value});
   }
-
-  //  const setDataToFirebase = (userId , userName , userEmail) =>  {
-  //    const db = getDatabase().ref('/users');
-  //  }
-
-
   const postDataHandler = async () => {
     
      const userData = userSignupData;
@@ -58,6 +52,7 @@ const SignUpUser = (props) => {
     //  setDataToFirebase(currentUser.user.uid , userData.userName , userData.email);
      dispatch(LogginUser()); 
      localStorage.setItem('email' , userData.email);
+     console.log(localStorage.getItem('email'));
      history.push('/Main');
 
      send(

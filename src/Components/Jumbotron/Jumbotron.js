@@ -4,13 +4,24 @@ import Style from './Jumbotron.module.css'
 import Steps from './../Carousel/Carousel'
 import {NavLink} from 'react-router-dom'
 import SearchBar from './../SearchBar/SearchBar'
-import { useSelector } from 'react-redux';
 import Footer from '../Footer/Footer'
+import { useSelector , useDispatch } from 'react-redux';
+import { LogginUser } from '../../actions/action';
+import { useHistory } from "react-router-dom";
+
+
 
 const Main = (props) => {
   const isUser = useSelector((state) => state.ChangeLogInState);
   console.log(isUser);
-  
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const signOut = () => {
+    alert('signOut successfull');
+ 
+    window.location.href = "/"; 
+  }
     return (
       <>
       <div className = "container">
@@ -28,8 +39,10 @@ const Main = (props) => {
                 {/* <Button variant="outline-primary"><NavLink to = "/Login" className={Style.link}>Login </NavLink></Button> */}
                 {/* <Button><NavLink to = "/UserSignUp" className={Style.link}>User SignUp</NavLink></Button>  */}
                 </div> : <p>{`Welcome ${localStorage.getItem('email')}`}</p>
+                
              }
             </div>
+            <Button className={Style.signOut} onClick={signOut}>SignOut</Button>
             </div>
           <p className="lead"></p>
           <hr className="my-2" />

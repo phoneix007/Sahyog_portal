@@ -8,6 +8,7 @@ import {FaBed} from "react-icons/fa";
 import {BsPeopleFill , BsStarFill} from "react-icons/bs";
 import axios from 'axios';
 
+
 import {NavLink , useHistory} from 'react-router-dom'
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import { Modal } from "react-bootstrap";
@@ -46,7 +47,7 @@ const List = (props) => {
       for(const key in response.data){
         arr.push({...response.data[key], id: key});
       }
-      const liveHospitals = await axios.get('https://sahyogportal-mp2-default-rtdb.firebaseio.com/Hospitals/Live_hospital.json');
+      const liveHospitals = await axios.get('https://sahyogportal-mp2-default-rtdb.firebaseio.com/Hospitals/Live_Hospital/-N1mv4nQT2IiLvBwz86r.json');
        console.log(liveHospitals.data);
       const finalArray = compare(arr , liveHospitals.data);
       finalArray.sort((a , b) => b['HospitalRating'] - a['HospitalRating']);
@@ -55,7 +56,7 @@ const List = (props) => {
      }
      
     getdata();   
-  },[getReload]);
+  });
   
   const Cards = hostpitals.map((el , index) => {
 

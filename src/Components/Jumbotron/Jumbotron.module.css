@@ -46,3 +46,10 @@
   font-family: 'Times New Roman', Times, serif;
   color: #077563;
 }
+
+.signOut{
+  width: 8rem;
+  height: 3rem;
+  background-color:#077563;
+  color: #fff;
+}

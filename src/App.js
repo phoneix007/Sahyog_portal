@@ -10,11 +10,14 @@ import {Switch , Route} from 'react-router-dom'
 import UserSignUP from './Components/SignUpUser/SignUpUser'
 import DoctorConatinerCard from './DoctorsCard/DoctorContainerCard'
 import Contact from '../src/Components/ContactUs/ContactUs';
+import Appointments from './Components/Appointments/Appointments'
+import { useSelector } from 'react-redux';
 
 const App = () => {
 
  const [doctors , setDoctors] = useState([]);
  const [nameOfHospital , setNameOfHospital]  = useState('');
+ const isUser = useSelector((state) => state.ChangeLogInState);
 
  const history = useHistory();
 
@@ -30,7 +33,7 @@ const App = () => {
   <img src={`${process.env.PUBLIC_URL}/Assets/Logo.jpeg`} style={{
     height : "7rem",
   }} alt="Logo"/></div>
-  <Header/>
+   {isUser ? <Header/> : null}
   <Switch>
     <Route path="/" exact component={LoginUser}></Route>
     <Route path="/Main" exact component={Main}></Route>
@@ -39,9 +42,8 @@ const App = () => {
     <Route path="/Contact" exact component={Contact}></Route>
     <Route path="/UserSignUp" exact component={UserSignUP}></Route>
     <Route path = "/doctors" exact render={(props) => <DoctorConatinerCard doctorsArray={doctors} list={doctors} hospName={nameOfHospital}/>}/>
+    <Route path = "/Appointments" exact component={Appointments}/>
    </Switch>
-
-  {/* <DoctorConatinerCard /> */}
 </div> )
 }
 

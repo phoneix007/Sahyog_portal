@@ -1,13 +1,13 @@
-import firebase from 'firebase'
-import google from 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAoDJ4s8Sf-IdZrNNK58PTeTpmSr7KYAjw&callback=initMap&libraries=places&v=weekly';
+// import firebase from 'firebase'
+import * as api from 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAoDJ4s8Sf-IdZrNNK58PTeTpmSr7KYAjw&callback=initMap&libraries=places&v=weekly';
 let loc;
 function initMap() {
     // Create the map.
     getLocation()
     if(loc==null) return
-    const map = new google.maps.Map({});
+    const map = new api.api.google.maps.Map({});
     // Create the places service.
-    const service = new google.maps.places.PlacesService(map);
+    const service = new api.google.maps.places.PlacesService(map);
     
   
     // Perform a nearby search.
@@ -28,13 +28,13 @@ function addPlaces(places, map) {
     if (place.geometry && place.geometry.location) {
       const image = {
         url: place.icon,
-          size: new google.maps.Size(71, 71),
-          origin: new google.maps.Point(0, 0),
-          anchor: new google.maps.Point(17, 34),
-          scaledSize: new google.maps.Size(25, 25),
+          size: new api.google.maps.Size(71, 71),
+          origin: new api.google.maps.Point(0, 0),
+          anchor: new api.google.maps.Point(17, 34),
+          scaledSize: new api.google.maps.Size(25, 25),
         };
   
-        new google.maps.Marker({
+        new api.google.maps.Marker({
           map,
           icon: image,
           title: place.name,
@@ -53,19 +53,21 @@ function addPlaces(places, map) {
     console.log(ListOfHospitals);
     
     
-    let hospitalsRef = firebase.database().ref("Hospitals/");
+    // let hospitalsRef = firebase.database().ref("Hospitals/");
 
-    hospitalsRef.update ({
-       Live_hospital: ListOfHospitals
+    // hospitalsRef.update ({
+    //    Live_hospital: ListOfHospitals
        
-    });
+    // });
 }
 
 function getLocation() {
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
+   navigator.geolocation.getCurrentPosition(showPosition);
   } 
 }
 function showPosition(position) {
   loc = { lat: position.coords.latitude, lng: position.coords.longitude};
 }
+
+initMap();

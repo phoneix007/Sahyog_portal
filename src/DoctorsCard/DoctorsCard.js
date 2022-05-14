@@ -31,7 +31,7 @@ const DoctorsInfo = (props) => {
         Seats: (parseInt(seats.data) - 1)     
       });
       history.push('/List');
-      await axios.post('https://sahyogportal-mp2-default-rtdb.firebaseio.com/Appointments.json', {Timing: timing, Doctor: docName});
+      await axios.post('https://sahyogportal-mp2-default-rtdb.firebaseio.com/Appointments.json', {Timing: timing, Doctor: docName , name: localStorage.getItem('email') , Hospital:hospitalName });
       console.log(`${url}${hospitalName}/Doctor Details/${spec}/${docName}/DoctorTiming/${timing}/Seats.json`);
       alert(`Your seat is booked , Slot Timing is ${timing}`);
     }
